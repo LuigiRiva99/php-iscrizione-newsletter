@@ -16,7 +16,7 @@
                 </li>
             </ul>
             <div class="search_bar">
-                <button class="btn ms_button">SIGN UP</button>
+                <button class="btn ms_button">SIGN IN</button>
             </div>
         </div>
     </div>

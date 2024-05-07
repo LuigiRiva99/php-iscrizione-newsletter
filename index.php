@@ -30,23 +30,14 @@ $email = $_POST['email'] ?? null;
                                 <input type="email" name="email" placeholder="Inserisci la tua email" class="ms_mail">
                                 <button type="submit" class="btn btn-primary m-3">Invia</button>
                                 <?php
-                                    //includo il file utilities 
-                                    include __DIR__ . '/utilities.php';
-                                    //controllo se $email contiene @ e .
+                                    //controllo se è stata inserita una mail
                                     if ($email) {
-                                        if (mailValidation($email))  {
-                                            ?>
-                                                <div class="alert alert-success" role="alert">
-                                                    E-mail inserita correttamente
-                                                </div>
-                                            <?php
-                                        } else {
-                                            ?>
-                                                <div class="alert alert-danger" role="alert">
-                                                    E-mail non valida
-                                                </div>
-                                            <?php
-                                        }
+                                        //avvio session
+                                        session_start();
+                                        $_SESSION['email'] = $email;
+
+                                        // redirect
+                                        header('Location: ./subscription.php');
                                     }
                                 ?>
                             </form>
