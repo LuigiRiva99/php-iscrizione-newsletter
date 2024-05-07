@@ -3,7 +3,6 @@
 //recupero mail dall'input
 $email = $_POST['email'] ?? null;
 
-
 ?>
 
 <!DOCTYPE html>
@@ -34,7 +33,21 @@ $email = $_POST['email'] ?? null;
                                     //includo il file utilities 
                                     include __DIR__ . '/utilities.php';
                                     //controllo se $email contiene @ e .
-                                    mailValidation($email)
+                                    if ($email) {
+                                        if (mailValidation($email))  {
+                                            ?>
+                                                <div class="alert alert-success" role="alert">
+                                                    E-mail inserita correttamente
+                                                </div>
+                                            <?php
+                                        } else {
+                                            ?>
+                                                <div class="alert alert-danger" role="alert">
+                                                    E-mail non valida
+                                                </div>
+                                            <?php
+                                        }
+                                    }
                                 ?>
                             </form>
                         </div>
