@@ -3,7 +3,23 @@
 //recupero mail dall'input
 $email = $_POST['email'] ?? null;
 
-
+function mailValidation($user_mail) {
+    if ($user_mail) {
+        if (str_contains($user_mail,'@') && str_contains($user_mail,'.')) {
+            ?>
+                <div class="alert alert-success" role="alert">
+                    E-mail inserita correttamente
+                </div>
+            <?php
+        }else {
+            ?>
+                <div class="alert alert-danger" role="alert">
+                    E-mail non valida
+                </div>
+            <?php
+        }
+    }
+}
 ?>
 
 <!DOCTYPE html>
@@ -20,23 +36,8 @@ $email = $_POST['email'] ?? null;
         <button type="submit" class="btn btn-primary">Invia</button>
         <?php
             //controllo se $email contiene @ e .
-            if ($email) {
-                if (str_contains($email,'@') && str_contains($email,'.')) {
-                    ?>
-                        <div class="alert alert-success" role="alert">
-                            E-mail inserita correttamente
-                        </div>
-                    <?php
-                }else {
-                    ?>
-                        <div class="alert alert-danger" role="alert">
-                            E-mail non valida
-                        </div>
-                    <?php
-                }
-            }
+            mailValidation($email)
         ?>
-
     </form>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>    
 </body>
